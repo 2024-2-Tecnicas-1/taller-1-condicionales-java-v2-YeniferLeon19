@@ -2,6 +2,7 @@
 package ejercicios;
 
 import static ejercicios.SetDeTenis.evaluar;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -10,8 +11,20 @@ import java.util.Scanner;
  */
 public class Edad {
     public static String evaluar(int dia, int mes, int anno) {
-        // TODO: Coloca aquí el código del ejercicio 6: Edad
-        return "";
+        LocalDate fechaActual = LocalDate.now();
+        int diaActual = fechaActual.getDayOfMonth();
+        int mesActual = fechaActual.getMonthValue();
+        int annoActual = fechaActual.getYear();
+
+        // Calcular la edad base
+        int edad = annoActual - anno;
+
+        // Ajustar si el cumpleaños no ha pasado aún este año
+        if (mes > mesActual || (mes == mesActual && dia > diaActual)) {
+            edad -= 1;
+        }
+
+        return "Usted tiene " + edad + " años";
     }
     
     public static void main(String[] args) {
